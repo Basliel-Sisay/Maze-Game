@@ -87,5 +87,5 @@ def formMaze(maze, screen):
         screen.fill(white)
         maze.draw(screen)
         pygame.display.flip()
-        pygame.time.delay(15)
+        pygame.time.delay(20)
                   

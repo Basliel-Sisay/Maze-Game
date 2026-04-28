@@ -49,4 +49,43 @@ class Maze:
                     pygame.draw.line(screen, black, (x,y+Cell_length), (x+Cell_length, y + Cell_length))
                 if self.eastWall[r][c-1]:
                     pygame.draw.line(screen, black, (x,y), (x,y+ Cell_length))
-                    
+
+ 
+def formMaze(maze, screen):
+    buffer = [(1,1)]
+    maze.visited[1][1] = True
+ 
+    while buffer:
+        r ,c = buffer[len(buffer)-1]
+        side = []
+        if r< maze.Row and maze.visited[r+1][c] == False:
+            side.append(('N', r+1, c))
+        if r > 1 and maze.visited[r-1][c] == False:
+            side.append(('S', r-1, c))
+        if c < maze.Column and maze.visited[r][c+1] == False:
+            side.append(('E', r, c+1))
+        if c>1 and maze.visited[r][c-1]== False:
+            side.append(('W', r, c-1))
+
+        if side:
+            path, nr, nc = random.choice(side)
+            if path == 'N': 
+                maze.northWall[r][c] =0
+            if path == 'E':
+                maze.eastWall[r][c]=0
+            if path == 'S':
+                maze.northWall[r-1][c]=0
+            if path == 'W':
+                maze.eastWall[r][c-1]=0
+
+            maze.visited[nr][nc] = True
+            buffer.append((nr,nc))
+
+        else:
+            buffer.pop()
+
+        screen.fill(white)
+        maze.draw(screen)
+        pygame.display.flip()
+        pygame.time.delay(15)
+                  

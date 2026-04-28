@@ -50,7 +50,6 @@ class Maze:
                 if self.eastWall[r][c-1]:
                     pygame.draw.line(screen, black, (x,y), (x,y+ Cell_length))
 
- 
 def formMaze(maze, screen):
     buffer = [(1,1)]
     maze.visited[1][1] = True
@@ -88,6 +87,7 @@ def formMaze(maze, screen):
         maze.draw(screen)
         pygame.display.flip()
         pygame.time.delay(15)
+
 def win(maze, screen, start, end):
     buffer = [start]
     visited = set([start])
@@ -135,4 +135,11 @@ def drawing(screen, position, color):
     r,c = position
     x= (c-1) * Cell_length + Cell_length//2
     y= (maze.Row - r) * Cell_length + Cell_length//2
-    pygame.draw.circle(screen,color,(x,y), Cell_length//4)                  
+    pygame.draw.circle(screen,color,(x,y), Cell_length//4)
+
+pygame.init()
+screen = pygame.display.set_mode((Width, Height))
+maze= Maze(Row, Column)
+formMaze(maze, screen)
+win(maze,screen, (1,1), (Row,Column))
+pygame.quit()

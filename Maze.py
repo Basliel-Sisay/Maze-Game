@@ -86,7 +86,7 @@ def formMaze(maze, screen):
         screen.fill(white)
         maze.draw(screen)
         pygame.display.flip()
-        pygame.time.delay(15)
+        pygame.time.delay(5)
 
 def win(maze, screen, start, end):
     buffer = [start]
@@ -130,7 +130,7 @@ def win(maze, screen, start, end):
         for i in range(len(buffer)):
             drawing(screen, buffer[i], blue)
         pygame.display.flip()
-        pygame.time.delay(60)
+        pygame.time.delay(40)
 def drawing(screen, position, color):
     r,c = position
     x= (c-1) * Cell_length + Cell_length//2

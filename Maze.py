@@ -88,4 +88,51 @@ def formMaze(maze, screen):
         maze.draw(screen)
         pygame.display.flip()
         pygame.time.delay(15)
-                  
+def win(maze, screen, start, end):
+    buffer = [start]
+    visited = set([start])
+    before = {start: None}
+
+    while buffer:
+        now = buffer[len(buffer)-1]
+        if now == end:
+            break
+        r,c= now
+        side = []
+        if r< maze.Row:
+            if maze.northWall[r][c] == 0:
+                if(r+1, c) not in visited:
+                    side.append((r+1,c))
+        
+        if r>1:
+            if maze.northWall[r-1][c] == 0:
+                if (r-1,c) not in visited:
+                    side.append((r-1,c))
+
+        if c< maze.Column:
+            if maze.eastWall[r][c]==0:
+                if(r, c+1) not in visited:
+                    side.append((r,c+1))
+
+        if c>1:
+            if maze.eastWall[r][c-1]==0:
+                if(r, c-1) not in visited:
+                    side.append((r,c-1))
+
+        if side:
+            sideCell = random.choice(side)
+            visited.add(sideCell)
+            buffer.append(sideCell)
+        else:
+            drawing(screen, now, red)
+            buffer.pop()
+
+        for i in range(len(buffer)):
+            drawing(screen, buffer[i], blue)
+        pygame.display.flip()
+        pygame.time.delay(60)
+def drawing(screen, position, color):
+    r,c = position
+    x= (c-1) * Cell_length + Cell_length//2
+    y= (maze.Row - r) * Cell_length + Cell_length//2
+    pygame.draw.circle(screen,color,(x,y), Cell_length//4)                  

@@ -124,11 +124,11 @@ def win(maze, screen, start, end):
             visited.add(sideCell)
             buffer.append(sideCell)
         else:
-            drawing(screen, now, red)
+            drawing(screen, now, blue)
             buffer.pop()
 
         for i in range(len(buffer)):
-            drawing(screen, buffer[i], blue)
+            drawing(screen, buffer[i], red)
         pygame.display.flip()
         pygame.time.delay(40)
 def drawing(screen, position, color):

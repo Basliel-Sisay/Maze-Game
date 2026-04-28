@@ -35,3 +35,18 @@ class Maze:
             self.visited.append([])
             for j in range(columns +1):
                 self.visited[i].append(False)
+    
+    def draw(self, screen):
+        for r in range(1, self.Row+1):
+            for c in range(1, self.Column+1):
+                x= (c-1) * Cell_length
+                y = (self.Row - r) * Cell_length
+                if self.northWall[r][c]:
+                    pygame.draw.line(screen, black, (x,y), (x+ Cell_length, y))
+                if self.eastWall[r][c]:
+                    pygame.draw.line(screen, black, (x+ Cell_length, y), (x+ Cell_length, y + Cell_length))
+                if self.northWall[r-1][c]:
+                    pygame.draw.line(screen, black, (x,y+Cell_length), (x+Cell_length, y + Cell_length))
+                if self.eastWall[r][c-1]:
+                    pygame.draw.line(screen, black, (x,y), (x,y+ Cell_length))
+                    

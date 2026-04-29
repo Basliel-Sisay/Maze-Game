@@ -18,12 +18,17 @@ class Maze:
     def __init__(self, rows, columns):
         self.Row = rows
         self.Column = columns
+        #northWall[r][c] means the upper cell wall
+        #Row+1 means that the edge is also included
+        #northWall[0][c] is the bottom edge of the whole maze
         self.northWall = []
         for i in range(rows +1):
             self.northWall.append([])
             for j in range(columns +1):
                 self.northWall[i].append(1)
-        
+        #eastWall[r][c] means the right side of the wall
+        #Column +1 means that the edge is also included
+        #eastWall[r][0] is the left edge of the whole maze
         self.eastWall = []
         for i in range(rows +1):
             self.eastWall.append([])
@@ -41,12 +46,18 @@ class Maze:
             for c in range(1, self.Column+1):
                 x= (c-1) * Cell_length
                 y = (self.Row - r) * Cell_length
+                #draw north wall which is the top of the current cell
                 if self.northWall[r][c]:
                     pygame.draw.line(screen, black, (x,y), (x+ Cell_length, y))
+                #draw the east wall which is the right side of the current cell
                 if self.eastWall[r][c]:
                     pygame.draw.line(screen, black, (x+ Cell_length, y), (x+ Cell_length, y + Cell_length))
+                #draw the south wall which is the bottom side of the current cell
+                #when r is 1 self.northWall[0][c] makes a line for the bottom of the maze
                 if self.northWall[r-1][c]:
                     pygame.draw.line(screen, black, (x,y+Cell_length), (x+Cell_length, y + Cell_length))
+                #draw the west wall which is the left side of the current cell
+                #when c is 1 self.eastWall[r][0] makes a line for the left side of the maze
                 if self.eastWall[r][c-1]:
                     pygame.draw.line(screen, black, (x,y), (x,y+ Cell_length))
 

@@ -22,11 +22,11 @@ The mouse checks neighbors that are located at:
 
 If a neighbor hasn't been visited the mouse will move there and eat the wall between them
 
-If the mouth reaches dead end it will pop the stack to return to the last cell with unvisited neighbors
+If the mouse reaches dead end it will pop the stack to return to the last cell with unvisited neighbors
 
 ## Loom Recording 
 
-This Loom record demonstrates the eating proccess where the maze is being generated dynamically and the solver where the "red dot" mouse finding its way and the "blue dots" marking dead ends
+This Loom recording demonstrates the "eating" process where the maze is generated dynamically and followed by the solver where the "red dot" mouse finds its way and "blue dots" mark the dead ends
 
   [![Maze game demo](https://img.shields.io/badge/Video-Demo-green)](https://www.loom.com/share/c7af003caec54ad5a3266214630a75f9)
 

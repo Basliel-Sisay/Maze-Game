@@ -43,3 +43,7 @@ Using a stack with the implementation of depth first search will create long pat
 - When the mouse get into the dead end it will mark the cell blue and backtracks by popping the stack
 
 - The successful path is marked by the red dots currently in the stack
+
+## Author
+
+[Basliel Sisay G/mariyam - UGR/3563/16 (Section - 02)](mailto:jackboy2098@gmail.com)
